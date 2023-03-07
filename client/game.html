@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordle</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+
+  <!-- toast -->
+  <script src="https://cdn.jsdelivr.net/npm/@reliutg/buzz-notify/index.min.js"></script>
+  <!--  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+    <script src="index.js"></script>
+  </head>
+  <body class="bg-[#111] text-white ">
+    <div id="notify"></div>
+    <div class="flex flex-col h-screen items-center justify-evenly overflow-hidden ">
+      <div data-guess-grid class="guess-grid grid gap-1.5 box-border p-2">
+        <div class="row">
+          <div class="tile animate__animated" data-empty="true" id="1"></div>
+          <div class="tile animate__animated" data-empty="true" id="2"></div>
+          <div class="tile animate__animated" data-empty="true" id="3"></div>
+          <div class="tile animate__animated" data-empty="true" id="4"></div>
+          <div class="tile animate__animated" data-empty="true" id="5"></div>
+        </div>
+        <div class="row">
+          <div class="tile animate__animated" data-empty="true" id="6"></div>
+          <div class="tile animate__animated" data-empty="true" id="7"></div>
+          <div class="tile animate__animated" data-empty="true" id="8"></div>
+          <div class="tile animate__animated" data-empty="true" id="9"></div>
+          <div class="tile animate__animated" data-empty="true" id="10"></div>
+        </div>
+        <div class="row">
+          <div class="tile animate__animated" data-empty="true" id="11"></div>
+          <div class="tile animate__animated" data-empty="true" id="12"></div>
+          <div class="tile animate__animated" data-empty="true" id="13"></div>
+          <div class="tile animate__animated" data-empty="true" id="14"></div>
+          <div class="tile animate__animated" data-empty="true" id="15"></div>
+        </div>
+        <div class="row">
+          <div class="tile animate__animated" data-empty="true" id="16"></div>
+          <div class="tile animate__animated" data-empty="true" id="17"></div>
+          <div class="tile animate__animated" data-empty="true" id="18"></div>
+          <div class="tile animate__animated" data-empty="true" id="19"></div>
+          <div class="tile animate__animated" data-empty="true" id="20"></div>
+        </div>
+        <div class="row">
+          <div class="tile animate__animated" data-empty="true" id="21"></div>
+          <div class="tile animate__animated" data-empty="true" id="22"></div>
+          <div class="tile animate__animated" data-empty="true" id="23"></div>
+          <div class="tile animate__animated" data-empty="true" id="24"></div>
+          <div class="tile animate__animated" data-empty="true" id="25"></div>
+        </div>
+        <div class="row">
+          <div class="tile animate__animated" data-empty="true" id="26"></div>
+          <div class="tile animate__animated" data-empty="true" id="27"></div>
+          <div class="tile animate__animated" data-empty="true" id="28"></div>
+          <div class="tile animate__animated" data-empty="true" id="29"></div>
+          <div class="tile animate__animated" data-empty="true" id="30"></div>
+        </div>
+      </div>
+      <div data-keyboard class="keyboard p-2 w-full sm:w-3/5">
+        <div class="keyboard-row">
+          <button id="#1" data-key="q">q</button>
+          <button id="#2" data-key="w">w</button>
+          <button id="#3" data-key="e">e</button>
+          <button id="#4" data-key="r">r</button>
+          <button id="#5" data-key="t">t</button>
+          <button id="#6" data-key="y">y</button>
+          <button id="#7" data-key="u">u</button>
+          <button id="#8" data-key="i">i</button>
+          <button id="#9" data-key="o">o</button>
+          <button id="#10" data-key="p">p</button>
+        </div>
+        <div class="keyboard-row">
+          <div class="spacer-half"></div>
+          <button id="#11" data-key="a">a</button>
+          <button id="#12" data-key="s">s</button>
+          <button id="#13" data-key="d">d</button>
+          <button id="#14" data-key="f">f</button>
+          <button id="#15" data-key="g">g</button>
+          <button id="#16" data-key="h">h</button>
+          <button id="#17" data-key="j">j</button>
+          <button id="#18" data-key="k">k</button>
+          <button id="#19" data-key="l">l</button>
+          <div class="spacer-half"></div>
+        </div>
+        <div class="keyboard-row">
+          <button data-key="enter" class="wide-button">Enter</button>
+          <button id="#20" data-key="z">z</button>
+          <button id="#21" data-key="x">x</button>
+          <button id="#22" data-key="c">c</button>
+          <button id="#23" data-key="v">v</button>
+          <button id="#24" data-key="b">b</button>
+          <button id="#25" data-key="n">n</button>
+          <button id="#26" data-key="m">m</button>
+          <button data-key="del" class="wide-button">Del</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
