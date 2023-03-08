@@ -14,8 +14,6 @@ let word = words[Math.floor(Math.random() * words.length)];
 app.get("/join-room", (req, res, next) => {
   const code = req.query.code;
   console.log(`Received code ${code} from client.`);
-  
-  console.log(code)
   if (code === 'Code') {
     return next();
   } else {
@@ -30,7 +28,10 @@ io.on("connection", (sock) => {
 
   sock.emit("msg", "you are connected");
   io.emit("word", word, words);
-  
+  sock.on('loser', () => {
+    // notify all clients except the loser that they lost the round
+    sock.broadcast.emit('loser');
+  });
   sock.on("winner", () => {
     word = words[Math.floor(Math.random() * words.length)];
     io.emit("reload-page"); 
@@ -46,6 +47,4 @@ server.on("error", (err) => {
   console.error(err);
 });
 
-server.listen(8080, () => {
-  console.log("helloo");
-});
+server.listen(8080);

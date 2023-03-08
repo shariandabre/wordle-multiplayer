@@ -1,26 +1,20 @@
-// const savedCode = localStorage.getItem("code");
-// const code = savedCode || prompt("Enter code:");
 
-// if(code!=="Code"){
-//   code = savedCode || prompt("Enter correct code:");
-// }
-// localStorage.setItem("code", code);
 
 const sock = io();
-
+sock.on('loser', function() {
+  Notify({
+    title: "You lost the round!",
+    type: "warning",
+    position: "top center",
+    duration: 2000,
+  });
+});
 sock.on('reload-page', function() {
   setTimeout(function() {
     location.reload();
   }, 2000);
 });
 
-sock.on("player-won", () => {
-  Notify({
-    title: `${playername} won the round`,
-    position: "top center",
-    duration: 2000,
-  });
-});
 document.addEventListener("DOMContentLoaded", () => {
 
   sock.on('msg',(text)=>( Notify({
@@ -129,8 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
         position: "top center",
         duration: 2000,
       });
-      sock.emit('winner')
-
+      sock.emit('loser');
+      sock.emit('winner') 
     }
     if (guessedWords.length === 6) {
       if (currentWord === word) {
@@ -139,6 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
           position: "top center",
           duration: 2000,
         });
+        sock.emit('loser');
         sock.emit('winner')
 
       } else {
