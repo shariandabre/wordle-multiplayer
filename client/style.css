@@ -81,4 +81,11 @@ body{
     button[data-key="del"]{
       margin-right: 0;
     }
+
+  }
+  @media (min-width:370px) {
+    .keyboard-row button {
+      height: 7vh;
+      width: 7vh;
+    }
   }
